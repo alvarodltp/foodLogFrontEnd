@@ -1,13 +1,13 @@
 import React from 'react'
 
-class FoodDetail extends React.Component {
+class FoodDetail extends React.Component{
   render(){
     return(
-      <div className="card">
-        <div className="ui input focus">
-          <input type="text" placeholder="Search for foods..."/>
-        </div>
+      <div className="ui card">
+        <h1>This is the food detail</h1>
+        <button className="positive ui button">Add Food</button>
       </div>
+
     )
   }
 }

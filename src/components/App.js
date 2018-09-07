@@ -1,7 +1,7 @@
 import React from 'react';
 import '../App.css';
 import NavBar from './NavBar.js';
-import DietContainer from './DietContainer'
+import FoodContainer from './FoodContainer'
 import UserDetail from './UserDetail'
 import NumbersDetail from './NumbersDetail'
 import Calendar from './Calendar'
@@ -24,7 +24,6 @@ fetch("http://localhost:3002/users/2")
 })
 }
 
-
   render(){
     return(
       <div>
@@ -32,7 +31,7 @@ fetch("http://localhost:3002/users/2")
         <Calendar />
         <UserDetail user={this.state.user}/>
         <NumbersDetail user={this.state.user}/>
-        <DietContainer />
+        <FoodContainer />
       </div>
     )
   }

@@ -8,7 +8,11 @@
     "react": "^16.5.0",
     "react-datepicker": "^1.6.0",
     "react-dom": "^16.5.0",
-    "react-scripts": "1.1.5"
+    "react-scripts": "1.1.5",
+    "semantic-ui": "^2.3.3",
+    "semantic-ui-css": "^2.3.3",
+    "semantic-ui-react": "^0.82.3",
+    "yarn": "^1.9.4"
   },
   "scripts": {
     "start": "react-scripts start",
