@@ -6,7 +6,7 @@ class SearchBar extends React.Component {
       <div className="card">
       <h2>Search Bar</h2>
         <div className="ui input focus">
-          <input onKeyDown={this.props.filterFood} type="text" placeholder="Search for foods..."/>
+          <input onChange={this.props.filterFood} type="text" placeholder="Search for foods..."/>
         </div>
       </div>
     )

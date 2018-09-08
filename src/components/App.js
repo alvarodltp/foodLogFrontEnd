@@ -33,6 +33,7 @@ fetch("http://localhost:3002/users/2")
         <NumbersDetail user={this.state.user}/>
         <FoodContainer />
       </div>
+
     )
   }
 }

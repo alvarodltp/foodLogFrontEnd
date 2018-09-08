@@ -9,8 +9,8 @@ class FoodContainer extends React.Component {
     super()
     this.state = {
       allFoods: [],
-      searchInput: ""
-
+      searchInput: "",
+      selectedFood: [] //this will be changed by click handler so I can show the food details in foodDetail. Need to somehow get the object of the selected food here.
     }
   }
 
@@ -31,13 +31,21 @@ class FoodContainer extends React.Component {
     })
 }
 
+clickHandler = (e) => {
+  let selectedFoodId = parseInt(e.target.innerText.split(" ")[0])
+  let filteredFood = this.state.allFoods.filter(food => food.id === selectedFoodId)
+  this.setState({
+    selectedFood: filteredFood
+  })
+}
+
   render(){
     return(
       <div className="card">
         <DietDetail />
         <SearchBar allFoods={this.state.allFoods} filterFood={this.filterFood}/>
-        <FoodList allFoods={this.state.allFoods} searchedFood={this.state.searchInput}/>
-        <FoodDetail />
+        <FoodList allFoods={this.state.allFoods} searchedFood={this.state.searchInput} clickHandler={this.clickHandler}/>
+        <FoodDetail selectedFood={this.state.selectedFood}/>
       </div>
     )
   }
