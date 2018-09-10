@@ -9,7 +9,7 @@ const FoodList = (props) => {
         let filteredFoods = props.allFoods.filter(food => food.name.toLowerCase().includes(props.searchedFood.toLowerCase())
       );
       return filteredFoods.map(food => (
-        <p onClick={props.clickHandler}>{food.id} {food.name}</p>
+        <p id={`food-${food.id}`} onClick={props.clickHandler}> {food.name}</p>
       ))
     }
 }

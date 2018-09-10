@@ -13,7 +13,7 @@ class UserDetail extends React.Component {
         <h3>Height: {this.props.user.height}</h3>
         <h3>Body Fat: {this.props.user.body_fat}</h3>
       </div>
-  
+
     )
   }
 }

@@ -1,26 +1,23 @@
 import React from 'react'
 
 class DietDetail extends React.Component {
+
   render(){
+    // debugger
     return(
     <div className="ui card">
       <h2>Diet Detail</h2>
-      <h3>Breakfast</h3>
-      <input type="text"/>
-      <h3>Lunch</h3>
-      <input type="text"/>
-      <h3>Dinner</h3>
-      <input type="text"/>
-      <h3>Snacks</h3>
-      <input type="text"/>
-      <h3>Water Intake</h3>
-      <label>Cups</label>
+      {this.props.addedFoods.map(food =>
+      <div>
+        <ul>
+          <li>{food.name}: Calories: {food.calories} | Protein: {food.protein}g | Carbs: {food.carbs}g | Fats: {food.fats}g</li>
+        </ul>
+      </div>
+    )}
+      <label>Water</label>
       <input type="number"/>
       <button className="ui primary button">
         Save
-      </button>
-      <button className="ui button">
-        Edit
       </button>
     </div>
     )
