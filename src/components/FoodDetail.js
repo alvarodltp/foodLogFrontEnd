@@ -9,8 +9,8 @@ class FoodDetail extends React.Component{
     return(
       <div className="ui card">
         <h1>This is the food detail</h1>
-
-        <div>
+        {this.props.selectedFood.map(food =>
+        <div id={food.id}>
           <img id="food-img" src={food.food_url} alt=""></img>
           <p>{food.name}</p>
           <p>Calories: {food.calories}</p>
@@ -20,7 +20,7 @@ class FoodDetail extends React.Component{
           Servings: <input id="input" onChange={this.props.changeFoodNumbers} type="number" placeholder="oz" defaultValue="1"></input>
           <button onClick={this.props.addFoodToDiet} className="positive ui button">Add Food</button>
         </div>
-
+      }     
       </div>
     )
   }

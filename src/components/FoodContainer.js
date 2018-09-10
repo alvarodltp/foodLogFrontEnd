@@ -27,7 +27,6 @@ class FoodContainer extends React.Component {
     })
   }
 
-
   filterFood = (e) => {
     this.setState({
       searchInput: e.target.value

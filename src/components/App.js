@@ -1,4 +1,6 @@
 import React from 'react';
+// import { Route, Switch } from "react-router-dom";
+
 import '../App.css';
 import NavBar from './NavBar.js';
 import FoodContainer from './FoodContainer'
@@ -18,6 +20,7 @@ componentDidMount = () => {
 fetch("http://localhost:3002/users/1")
 .then(response => response.json())
 .then(json =>{
+  // console.log(json)
   this.setState({
     user: json,
     addedFoodsToDiet: []
@@ -36,7 +39,6 @@ fetch("http://localhost:3002/users/1")
 //     startingMacros: macros
 //   })
 // }
-
 
   render(){
     return(
