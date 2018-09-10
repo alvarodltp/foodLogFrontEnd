@@ -43,7 +43,6 @@ fetch("http://localhost:3002/users/1")
   render(){
     return(
       <div>
-        <NavBar />
         <Calendar />
         <UserDetail user={this.state.user}/>
         <FoodContainer user={this.state.user}/>
