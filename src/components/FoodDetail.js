@@ -17,9 +17,10 @@ class FoodDetail extends React.Component{
           <p>Carbs: {food.carbs}</p>
           <p>Fats: {food.fats}</p>
           Servings: <input id="input" onChange={this.props.changeFoodNumbers} type="number" placeholder="oz" defaultValue="1"></input>
-          <button onClick={this.props.addFoodToDiet} className="positive ui button">Add Food</button>
+          <button onClick={() => {this.props.addFoodToDiet(); this.props.updateUserMacros(food);}} className="positive ui button">Add Food</button>
         </div>
       </div>
+
     )
   }
 }

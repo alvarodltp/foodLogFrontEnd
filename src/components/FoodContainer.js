@@ -13,7 +13,8 @@ class FoodContainer extends React.Component {
       searchInput: "",
       selectedFood: null, //this will be changed by click handler so I can show the food details in foodDetail. Need to somehow get the object of the selected food here.
       addedFoods: [],
-      servings: 0
+      servings: 0,
+      userMacros: null
     }
   }
 
@@ -43,10 +44,7 @@ clickHandler = (e) => {
 }
 
 //function that will pass to addFoodToDiet so it gets the object of the added food
-
-
 changeFoodNumbers = (e) => {
-  // debugger
   let servings = parseInt(e.target.value)
   let originalObj = this.state.allFoods.find(food => food.id === this.state.selectedFood.id)
   let newValue = {...originalObj}
@@ -54,7 +52,6 @@ changeFoodNumbers = (e) => {
   newValue.protein = Math.round(newValue.protein * servings * 100) / 100
   newValue.carbs = Math.round(newValue.carbs * servings * 100) / 100
   newValue.fats = Math.round(newValue.fats * servings * 100) / 100
-  console.log(servings, newValue)
   this.setState({
     selectedFood: newValue
     // servings: servings
@@ -71,11 +68,11 @@ this.setState({
   render(){
     return(
       <div className="card">
-        <NumbersDetail user={this.props.user} addedFoods={this.state.addedFoods}/>
+        {this.props.userMacros ? <NumbersDetail user={this.props.user} addedFoods={this.state.addedFoods} userMacros={this.props.userMacros}/> : null}
         <DietDetail addedFoods={this.state.addedFoods} selectedFood={this.state.selectedFood}/>
         <SearchBar allFoods={this.state.allFoods} filterFood={this.filterFood}/>
         <FoodList allFoods={this.state.allFoods} searchedFood={this.state.searchInput} clickHandler={this.clickHandler}/>
-        {this.state.selectedFood ? <FoodDetail selectedFood={this.state.selectedFood} addFoodToDiet={this.addFoodToDiet} changeFoodNumbers={this.changeFoodNumbers} servings={this.state.servings}/> : null}
+        {this.state.selectedFood ? <FoodDetail updateUserMacros={this.props.updateUserMacros} selectedFood={this.state.selectedFood} addFoodToDiet={this.addFoodToDiet} changeFoodNumbers={this.changeFoodNumbers} servings={this.state.servings}/> : null}
       </div>
     )
   }
