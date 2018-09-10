@@ -10,7 +10,9 @@ class FoodContainer extends React.Component {
     this.state = {
       allFoods: [],
       searchInput: "",
-      selectedFood: [] //this will be changed by click handler so I can show the food details in foodDetail. Need to somehow get the object of the selected food here.
+      selectedFood: [], //this will be changed by click handler so I can show the food details in foodDetail. Need to somehow get the object of the selected food here.
+      addedFoods: [],
+      servings: 0
     }
   }
 
@@ -23,7 +25,6 @@ class FoodContainer extends React.Component {
       })
     })
   }
-
 
   filterFood = (e) => {
     this.setState({
@@ -39,13 +40,37 @@ clickHandler = (e) => {
   })
 }
 
+addFoodToDiet = (e) => {
+let addedFoodId = parseInt(e.target.parentElement.id)
+let foodObj = this.state.allFoods.filter(food => food.id === addedFoodId)
+this.setState({
+  addedFoods: [...this.state.addedFoods, foodObj]
+})
+}
+
+changeFoodNumbers = (e) => {
+  // debugger
+  let arr = []
+  let servings = parseInt(e.target.value)
+  let newValue = this.state.selectedFood[0]
+  newValue.calories = newValue.calories * servings
+  newValue.protein = newValue.protein * servings
+  newValue.carbs = newValue.carbs * servings
+  newValue.fats = newValue.fats * servings
+  arr.push(newValue)
+  this.setState({
+    selectedFood: arr,
+    servings: servings
+  })
+}
+
   render(){
     return(
       <div className="card">
-        <DietDetail />
+        <DietDetail addedFoods={this.state.addedFoods}/>
         <SearchBar allFoods={this.state.allFoods} filterFood={this.filterFood}/>
         <FoodList allFoods={this.state.allFoods} searchedFood={this.state.searchInput} clickHandler={this.clickHandler}/>
-        <FoodDetail selectedFood={this.state.selectedFood}/>
+        <FoodDetail selectedFood={this.state.selectedFood} addFoodToDiet={this.addFoodToDiet} changeFoodNumbers={this.changeFoodNumbers} servings={this.state.servings}/>
       </div>
     )
   }

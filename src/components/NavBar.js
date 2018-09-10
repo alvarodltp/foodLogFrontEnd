@@ -1,19 +1,32 @@
 
-import React from 'react'
-
-class NavBar extends React.Component{
-  render(){
-    return(
-      <div className="ui menu">
-        <div className="item">
-        <div className="ui primary button">Sign up</div>
-      </div>
-      <div className="item">
-        <div className="ui button">Log-in</div>
-        </div>
-      </div>
-    )
-  }
-}
-
-export default NavBar
+// import React from 'react'
+// import { NavLink } from "react-router-dom";
+//
+// const NavBar = (props) => {
+//   return (
+//     <div className={`ui inverted ${props.color} menu navbar`}>
+//       <NavLink
+//         exact
+//         to="/"
+//         className="ui item"
+//         activeClassName="ui active item"
+//       >
+//         Home
+//       </NavLink>
+//       {props.user ? (
+//         <span className="ui item">Logged in as: {props.user.name}</span>
+//       ) : (
+//         <NavLink
+//           exact
+//           to="/login"
+//           className="ui item"
+//           activeClassName="ui active item"
+//         >
+//           Login
+//         </NavLink>
+//       )}
+//     </div>
+//   );
+// };
+//
+// export default NavBar;
