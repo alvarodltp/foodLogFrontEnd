@@ -1,18 +1,33 @@
 import React from 'react'
+import { Grid, Segment } from 'semantic-ui-react'
+import { Card, Button, Image } from 'semantic-ui-react'
 
 class UserDetail extends React.Component {
 
   render() {
     return(
-
-      <div className="ui card">
-        <img className="ui small circular image" src={this.props.user.url} alt=""></img>
-        <h1>Name: {this.props.user.name}</h1>
-        <h3>Age: {this.props.user.age}</h3>
-        <h3>Weight: {this.props.user.weight}</h3>
-        <h3>Height: {this.props.user.height}</h3>
-        <h3>Body Fat: {this.props.user.body_fat}</h3>
-      </div>
+      <Card>
+        <Card.Content>
+          <Image floated='right' size='mini' src={this.props.user.url} alt=""/>
+          <Card.Header>{this.props.user.name}</Card.Header>
+            <Card.Description>
+              <Card.Content>Age: {this.props.user.age}</Card.Content>
+              <Card.Content>Weight: {this.props.user.weight}</Card.Content>
+              <Card.Content>Height: {this.props.user.height}</Card.Content>
+              <Card.Content>Body Fat: {this.props.user.body_fat}</Card.Content>
+            </Card.Description>
+        </Card.Content>
+        <Card.Content extra>
+        <div className='ui two buttons'>
+          <Button basic color='green'>
+            Update Stats
+          </Button>
+          <Button basic color='red'>
+            Delete Profile
+          </Button>
+        </div>
+      </Card.Content>
+      </Card>
 
     )
   }

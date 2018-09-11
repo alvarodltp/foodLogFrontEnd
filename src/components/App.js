@@ -1,5 +1,7 @@
 import React from 'react';
 // import { Route, Switch } from "react-router-dom";
+import { Container } from 'semantic-ui-react'
+import { Grid } from 'semantic-ui-react'
 
 import '../App.css';
 import NavBar from './NavBar.js';
@@ -27,6 +29,10 @@ fetch("http://localhost:3002/users/1")
   }, () => this.setInitialUserMacros()
 )
 })
+}
+
+updateDiet = () => {
+  
 }
 
 setInitialUserMacros = () => {
@@ -60,9 +66,19 @@ updateUserMacros = (selectedFoodMacros) => {
           color="yellow"
           subtitle="Your daily food tracker"
           />
-        <Calendar />
-        <UserDetail user={this.state.user}/>
-        <FoodContainer user={this.state.user} userMacros={this.state.userMacros} updateUserMacros={this.updateUserMacros}/>
+      <Container>
+        <Grid columns='equal'>
+        <Grid.Row>
+        <Grid.Column>
+          <UserDetail user={this.state.user}/>
+        </Grid.Column>
+        <Grid.Column>
+          <Calendar />
+        </Grid.Column>
+          <FoodContainer user={this.state.user} userMacros={this.state.userMacros} updateUserMacros={this.updateUserMacros}/>
+        </Grid.Row>
+        </Grid>
+      </Container>
       </div>
 
     )

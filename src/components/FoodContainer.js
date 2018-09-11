@@ -4,6 +4,7 @@ import SearchBar from './SearchBar'
 import FoodDetail from './FoodDetail'
 import FoodList from './FoodList'
 import NumbersDetail from './NumbersDetail'
+import { Grid } from 'semantic-ui-react'
 
 class FoodContainer extends React.Component {
   constructor(){
@@ -67,13 +68,25 @@ this.setState({
 
   render(){
     return(
-      <div className="card">
-        {this.props.userMacros ? <NumbersDetail user={this.props.user} addedFoods={this.state.addedFoods} userMacros={this.props.userMacros}/> : null}
-        <DietDetail addedFoods={this.state.addedFoods} selectedFood={this.state.selectedFood}/>
+      <Grid columns='equal'>
+      <Grid.Row>
+      <Grid.Column>
         <SearchBar allFoods={this.state.allFoods} filterFood={this.filterFood}/>
         <FoodList allFoods={this.state.allFoods} searchedFood={this.state.searchInput} clickHandler={this.clickHandler}/>
-        {this.state.selectedFood ? <FoodDetail updateUserMacros={this.props.updateUserMacros} selectedFood={this.state.selectedFood} addFoodToDiet={this.addFoodToDiet} changeFoodNumbers={this.changeFoodNumbers} servings={this.state.servings}/> : null}
-      </div>
+      </Grid.Column>
+      <Grid.Column>
+        {this.props.userMacros ? <NumbersDetail user={this.props.user} addedFoods={this.state.addedFoods} userMacros={this.props.userMacros}/> : null}
+      </Grid.Column>
+      </Grid.Row>
+      <Grid.Row>
+      <Grid.Column>
+      {this.state.selectedFood ? <FoodDetail updateUserMacros={this.props.updateUserMacros} selectedFood={this.state.selectedFood} addFoodToDiet={this.addFoodToDiet} changeFoodNumbers={this.changeFoodNumbers} servings={this.state.servings}/> : null}
+      </Grid.Column>
+      <Grid.Column>
+      <DietDetail addedFoods={this.state.addedFoods} selectedFood={this.state.selectedFood}/>
+      </Grid.Column>
+      </Grid.Row>
+      </Grid>
     )
   }
 }
