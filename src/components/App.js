@@ -63,6 +63,18 @@ handleChange = (e) => {
   })
 }
 
+substractFoodNumbers = (foodObj) => {
+  let userMacros = {...this.state.userMacros}
+  // debugger
+  userMacros['calories'] = userMacros.calories + foodObj.calories
+  userMacros['protein'] = userMacros.protein + foodObj.protein
+  userMacros['carbs'] = userMacros.carbs + foodObj.carbs
+  userMacros['fats'] = userMacros.fats + foodObj.fats
+  this.setState({
+    userMacros: userMacros
+  })
+}
+
   updateUserInfo = (user) => {
   let id = user.id
   fetch(`http://localhost:3002/users/${id}`, {
@@ -98,7 +110,7 @@ handleChange = (e) => {
         <Grid.Column>
           <Calendar />
         </Grid.Column>
-          <FoodContainer user={this.state.user} userMacros={this.state.userMacros} updateUserMacros={this.updateUserMacros}/>
+          <FoodContainer substractFoodNumbers={this.substractFoodNumbers} user={this.state.user} userMacros={this.state.userMacros} updateUserMacros={this.updateUserMacros}/>
         </Grid.Row>
         </Grid>
       </Container>

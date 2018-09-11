@@ -9,7 +9,7 @@ class DietDetail extends React.Component {
       {this.props.addedFoods.map(food =>
       <div>
         <ul>
-          <li>{food.name}: Calories: {food.calories} | Protein: {food.protein}g | Carbs: {food.carbs}g | Fats: {food.fats}g <Icon onClick={(e) => this.props.deleteFood(e, food.listId)} name='delete' /></li>
+          <li>{food.name}: Calories: {food.calories} | Protein: {food.protein}g | Carbs: {food.carbs}g | Fats: {food.fats}g <Icon onClick={(e) => {this.props.deleteFood(e, food.listId); this.props.substractFoodNumbers(food);}} name='delete' /></li>
         </ul>
       </div>
     )}

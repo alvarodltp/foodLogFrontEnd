@@ -72,7 +72,6 @@ this.setState({
 deleteFood = (e, id) => {
   let foodArr = [...this.state.addedFoods]
   let filteredArr = foodArr.filter(food => food.listId !== id)
-  console.log(filteredArr);
   this.setState({
     addedFoods: filteredArr
   })
@@ -95,7 +94,7 @@ deleteFood = (e, id) => {
       {this.state.selectedFood ? <FoodDetail updateUserMacros={this.props.updateUserMacros} selectedFood={this.state.selectedFood} addFoodToDiet={this.addFoodToDiet} changeFoodNumbers={this.changeFoodNumbers} servings={this.state.servings}/> : null}
       </Grid.Column>
       <Grid.Column>
-      <DietDetail addedFoods={this.state.addedFoods} selectedFood={this.state.selectedFood} deleteFood={this.deleteFood}/>
+      <DietDetail substractFoodNumbers={this.props.substractFoodNumbers} addedFoods={this.state.addedFoods} selectedFood={this.state.selectedFood} deleteFood={this.deleteFood} />
       </Grid.Column>
       </Grid.Row>
       </Grid>
