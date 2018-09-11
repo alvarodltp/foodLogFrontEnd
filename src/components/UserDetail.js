@@ -1,6 +1,7 @@
 import React from 'react'
 import { Grid, Segment } from 'semantic-ui-react'
 import { Card, Button, Image } from 'semantic-ui-react'
+import { Input } from 'semantic-ui-react'
 
 class UserDetail extends React.Component {
 
@@ -8,19 +9,17 @@ class UserDetail extends React.Component {
     return(
       <Card>
         <Card.Content>
-          <Image floated='right' size='mini' src={this.props.user.url} alt=""/>
+        <Image src={this.props.user.url} alt=""/>
           <Card.Header>{this.props.user.name}</Card.Header>
-            <Card.Description>
-              <Card.Content>Age: {this.props.user.age}</Card.Content>
-              <Card.Content>Weight: {this.props.user.weight}</Card.Content>
-              <Card.Content>Height: {this.props.user.height}</Card.Content>
-              <Card.Content>Body Fat: {this.props.user.body_fat}</Card.Content>
-            </Card.Description>
+              <Input onChange={this.props.handleChange} value={this.props.user.age} label="Age" type="number" name='age'/>
+              <Input onChange={this.props.handleChange} value={this.props.user.weight} label="Weight" type="number" name='weight'/>
+              <Input onChange={this.props.handleChange} value={this.props.user.height} label="Height" type="number" name='height'/>
+              <Input onChange={this.props.handleChange} value={this.props.user.body_fat} label="Body Fat" type="number" name='body_fat'/>
         </Card.Content>
         <Card.Content extra>
         <div className='ui two buttons'>
-          <Button basic color='green'>
-            Update Stats
+          <Button onClick= {() => {this.props.updateUserInfo(this.props.user)}} basic color='green'>
+            Update Profile
           </Button>
           <Button basic color='red'>
             Delete Profile

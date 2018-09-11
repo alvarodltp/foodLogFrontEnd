@@ -2,7 +2,8 @@ import React from 'react';
 // import { Route, Switch } from "react-router-dom";
 import { Container } from 'semantic-ui-react'
 import { Grid } from 'semantic-ui-react'
-
+import { Divider, Form, Label } from 'semantic-ui-react'
+import { Card, Icon, Image } from 'semantic-ui-react'
 import '../App.css';
 import NavBar from './NavBar.js';
 import FoodContainer from './FoodContainer'
@@ -19,20 +20,15 @@ class App extends React.Component {
   }
 
 componentDidMount = () =>{
-fetch("http://localhost:3002/users/1")
+fetch("http://localhost:3002/users/2")
 .then(response => response.json())
 .then(json =>{
-  console.log(json)
   this.setState({
     user: json,
     addedFoodsToDiet: []
   }, () => this.setInitialUserMacros()
 )
 })
-}
-
-updateDiet = () => {
-  
 }
 
 setInitialUserMacros = () => {
@@ -58,6 +54,33 @@ updateUserMacros = (selectedFoodMacros) => {
   })
 }
 
+handleChange = (e) => {
+  let user = {...this.state.user}
+  let attr = e.target.name
+  user[attr] = e.target.value
+  this.setState({
+    user: user
+  })
+}
+
+  updateUserInfo = (user) => {
+  let id = user.id
+  fetch(`http://localhost:3002/users/${id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        user: {
+          age: user.age,
+          height: user.height,
+          weight: user.weight,
+          body_fat: user.body_fat
+        }
+      })
+    });
+  }
+
   render(){
     return(
       <div>
@@ -70,7 +93,7 @@ updateUserMacros = (selectedFoodMacros) => {
         <Grid columns='equal'>
         <Grid.Row>
         <Grid.Column>
-          <UserDetail user={this.state.user}/>
+          <UserDetail user={this.state.user} updateUserInfo={this.updateUserInfo} handleChange={this.handleChange}/>
         </Grid.Column>
         <Grid.Column>
           <Calendar />

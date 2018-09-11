@@ -14,7 +14,7 @@ class DietDetail extends React.Component {
         </ul>
       </div>
     )}
-      <label>Water</label>
+      <label id="water-text">Cups of Water</label>
       <input type="number"/>
       <button className="ui primary button">
         Save
