@@ -6,6 +6,8 @@ import FoodList from './FoodList'
 import NumbersDetail from './NumbersDetail'
 import { Grid } from 'semantic-ui-react'
 
+let counter = 0
+
 class FoodContainer extends React.Component {
   constructor(){
     super()
@@ -60,10 +62,20 @@ changeFoodNumbers = (e) => {
 }
 
 addFoodToDiet = () => {
-let foodObj = this.state.selectedFood
+let foodObj = {...this.state.selectedFood}
+foodObj.listId = ++counter
 this.setState({
   addedFoods: [...this.state.addedFoods, foodObj]
 })
+}
+
+deleteFood = (e, id) => {
+  let foodArr = [...this.state.addedFoods]
+  let filteredArr = foodArr.filter(food => food.listId !== id)
+  console.log(filteredArr);
+  this.setState({
+    addedFoods: filteredArr
+  })
 }
 
   render(){
@@ -83,7 +95,7 @@ this.setState({
       {this.state.selectedFood ? <FoodDetail updateUserMacros={this.props.updateUserMacros} selectedFood={this.state.selectedFood} addFoodToDiet={this.addFoodToDiet} changeFoodNumbers={this.changeFoodNumbers} servings={this.state.servings}/> : null}
       </Grid.Column>
       <Grid.Column>
-      <DietDetail addedFoods={this.state.addedFoods} selectedFood={this.state.selectedFood}/>
+      <DietDetail addedFoods={this.state.addedFoods} selectedFood={this.state.selectedFood} deleteFood={this.deleteFood}/>
       </Grid.Column>
       </Grid.Row>
       </Grid>

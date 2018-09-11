@@ -1,16 +1,15 @@
 import React from 'react'
+import { Icon } from 'semantic-ui-react'
 
 class DietDetail extends React.Component {
-
   render(){
-    // debugger
     return(
     <div className="ui card">
       <h2>Diet Detail</h2>
       {this.props.addedFoods.map(food =>
       <div>
         <ul>
-          <li>{food.name}: Calories: {food.calories} | Protein: {food.protein}g | Carbs: {food.carbs}g | Fats: {food.fats}g</li>
+          <li>{food.name}: Calories: {food.calories} | Protein: {food.protein}g | Carbs: {food.carbs}g | Fats: {food.fats}g <Icon onClick={(e) => this.props.deleteFood(e, food.listId)} name='delete' /></li>
         </ul>
       </div>
     )}
