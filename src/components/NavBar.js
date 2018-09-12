@@ -1,5 +1,6 @@
 
 import React from 'react'
+import { Input } from 'semantic-ui-react'
 
 const NavBar = props => {
   return (
@@ -10,6 +11,10 @@ const NavBar = props => {
           <div className="content">{props.title}</div>
           <div className="sub header">{props.subtitle}</div>
         </h2>
+        <Input
+    action={{ color: 'green', labelPosition: 'right', icon: 'user', content: 'Login' }}
+    defaultValue='username'
+  />
       </a>
     </div>
   );

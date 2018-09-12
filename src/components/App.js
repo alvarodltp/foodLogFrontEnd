@@ -93,6 +93,24 @@ substractFoodNumbers = (foodObj) => {
     });
   }
 
+//   saveDiet = () => {
+//   let name = document.getElementById("first_name").value;
+//   fetch("http://localhost:3002/diets", {
+//     method: "POST",
+//     headers: {
+//       "Content-Type": "application/json"
+//     },
+//     body: JSON.stringify({
+//       day: day,
+//
+//     })
+//   })
+//     .then(response => response.json())
+//     .then(json => {
+//     });
+// }
+
+
   render(){
     return(
       <div>
@@ -101,19 +119,11 @@ substractFoodNumbers = (foodObj) => {
           color="yellow"
           subtitle="Your daily food tracker"
           />
-      <Container>
-        <Grid columns='equal'>
-        <Grid.Row>
-        <Grid.Column>
-          <UserDetail user={this.state.user} updateUserInfo={this.updateUserInfo} handleChange={this.handleChange}/>
-        </Grid.Column>
-        <Grid.Column>
+          <div className="ui container">
+            <UserDetail user={this.state.user} updateUserInfo={this.updateUserInfo} handleChange={this.handleChange}/>
+          </div>
           <Calendar />
-        </Grid.Column>
           <FoodContainer substractFoodNumbers={this.substractFoodNumbers} user={this.state.user} userMacros={this.state.userMacros} updateUserMacros={this.updateUserMacros}/>
-        </Grid.Row>
-        </Grid>
-      </Container>
       </div>
 
     )
