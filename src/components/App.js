@@ -119,11 +119,10 @@ substractFoodNumbers = (foodObj) => {
           color="yellow"
           subtitle="Your daily food tracker"
           />
-          <div className="ui container">
-            <UserDetail user={this.state.user} updateUserInfo={this.updateUserInfo} handleChange={this.handleChange}/>
-          </div>
-          <Calendar />
+          <Container>
+          <UserDetail user={this.state.user} updateUserInfo={this.updateUserInfo} handleChange={this.handleChange}/>
           <FoodContainer substractFoodNumbers={this.substractFoodNumbers} user={this.state.user} userMacros={this.state.userMacros} updateUserMacros={this.updateUserMacros}/>
+          </Container>
       </div>
 
     )
